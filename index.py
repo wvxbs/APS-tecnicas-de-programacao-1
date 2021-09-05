@@ -12,11 +12,10 @@ def main():
         Password = ReceiveUserInput("Insira a senha")
 
         if(ValidatePassword(Password) == False):
-            DisplayResults("Senha cadastrada com sucesso")
+            DisplayResults("A senha não atende os requisitos")
             CadastrationComplete = False
 
         else:
-
             if(WriteLoginToTextFile(User, Password)):
                 DisplayResults("Senha cadastrada com sucesso")
                 CadastrationComplete = True
