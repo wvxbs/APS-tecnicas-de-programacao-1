@@ -22,4 +22,5 @@ def main():
             else:
                 DisplayResults("Erro ao cadastrar senha. Tente novamente mais tarde")
                 CadastrationComplete = False
+                
 main()

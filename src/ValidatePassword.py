@@ -1,10 +1,5 @@
 import re
 
-ex = ("^(?=.*[a-z]) (?=." +
-             "*[A-Z])(?=.*\\d)" +
-             "(?=.*[-+_!@#$%^&*., ?]).+$")
-
-
 def RegexSearch(Password, Regex):
         Search = re.compile(Regex)
 
@@ -23,16 +18,9 @@ def LenghtPolicy(Password):
 def VerifyPolicies(Password):
     ProblemCounter = 0
 
-    if(RegexSearch(Password, "^(?=.*[a-z])") == False):
-        ProblemCounter = 1 + ProblemCounter
-
-    if(RegexSearch(Password, "^(?=.*[A-Z])") == False):
-        ProblemCounter = 1 + ProblemCounter
-
-    if(RegexSearch(Password, "^(?=.*\\d)") == False):
-        ProblemCounter = 1 + ProblemCounter
-
-    if(RegexSearch(Password, "^(?=.*[-+_!@#$%^&*., ?]).+$") == False):
+    if(RegexSearch(Password, ("^(?=.*[a-z]) (?=." +
+             "*[A-Z])(?=.*\\d)" +
+             "(?=.*[-+_!@#$%^&*., ?]).+$")) == False):
         ProblemCounter = 1 + ProblemCounter
 
     if(LenghtPolicy(Password) == False):
