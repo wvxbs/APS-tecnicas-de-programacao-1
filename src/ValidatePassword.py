@@ -1,31 +1,43 @@
-def UpperCasePolicy(Password):
-    return False
-def LowerCasePolicy(Password):
-    return False
-def NumberPolicy(Password):
-    return False
-def SpecialCharacterPolicy(Password):
-    return False
+import re
+
+ex = ("^(?=.*[a-z]) (?=." +
+             "*[A-Z])(?=.*\\d)" +
+             "(?=.*[-+_!@#$%^&*., ?]).+$")
+
+
+def RegexSearch(Password, Regex):
+        Search = re.compile(Regex)
+
+        if(re.search(Search, Password)):
+            return True
+        else:
+            return False
+
 def LenghtPolicy(Password):
-    return False
+    if( 8 >= len(Password)):
+        return True
+    else:
+        return False
+
 
 def VerifyPolicies(Password):
     ProblemCounter = 0
 
-    if(UpperCasePolicy(Password) == False):
+    if(RegexSearch(Password, "^(?=.*[a-z])") == False):
         ProblemCounter = 1 + ProblemCounter
 
-    if(LowerCasePolicy(Password) == False):
+    if(RegexSearch(Password, "^(?=.*[A-Z])") == False):
         ProblemCounter = 1 + ProblemCounter
 
-    if(NumberPolicy(Password) == False):
+    if(RegexSearch(Password, "^(?=.*\\d)") == False):
         ProblemCounter = 1 + ProblemCounter
 
-    if(SpecialCharacterPolicy(Password) == False):
+    if(RegexSearch(Password, "^(?=.*[-+_!@#$%^&*., ?]).+$") == False):
         ProblemCounter = 1 + ProblemCounter
 
     if(LenghtPolicy(Password) == False):
         ProblemCounter = 1 + ProblemCounter
+        
     return ProblemCounter
 
 def ValidatePassword(Password):
