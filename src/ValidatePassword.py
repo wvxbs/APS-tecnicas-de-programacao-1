@@ -23,8 +23,6 @@ def VerifyPolicies(Password):
 
     if RegexSearch(Password, ("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*., ?]).+$")) == False:
         ProblemCounter = 1 + ProblemCounter
-    
-    print(ProblemCounter)
 
     return ProblemCounter
 
