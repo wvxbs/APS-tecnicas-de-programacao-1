@@ -4,8 +4,11 @@ def ParseDataToWriteToFIle(User, Password):
     return ParsedData
 
 def WriteLoginToTextFile(User, Password):
-    with open('login.txt', 'w') as f:
-        f.write(ParseDataToWriteToFIle(User, Password))
-        f.close()
-
-    return True
+    try:
+        with open('login.txt', 'w') as f:
+            f.write(ParseDataToWriteToFIle(User, Password))
+            
+        return True
+            
+    except IOError:
+        return False
