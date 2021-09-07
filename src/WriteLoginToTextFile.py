@@ -1,5 +1,5 @@
 def ParseDataToWriteToFIle(User, Password):
-    ParsedData = f"user: {User} \nPassword: {Password}"
+    ParsedData = f"user: {User} \npassword: {Password}"
 
     return ParsedData
 
