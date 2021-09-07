@@ -3,29 +3,29 @@ import re
 def RegexSearch(Password, Regex):
         Search = re.compile(Regex)
 
-        if(re.search(Search, Password)):
+        if re.search(Search, Password):
             return True
         else:
             return False
 
 def LenghtPolicy(Password):
-    if( 8 >= len(Password)):
-        return True
-    else:
+    if len(Password) < 8:
         return False
+    else:
+        return True
 
 
 def VerifyPolicies(Password):
     ProblemCounter = 0
 
-    if(RegexSearch(Password, ("^(?=.*[a-z]) (?=." +
-             "*[A-Z])(?=.*\\d)" +
-             "(?=.*[-+_!@#$%^&*., ?]).+$")) == False):
+    if LenghtPolicy(Password) == False:
         ProblemCounter = 1 + ProblemCounter
 
-    if(LenghtPolicy(Password) == False):
+    if RegexSearch(Password, ("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*., ?]).+$")) == False:
         ProblemCounter = 1 + ProblemCounter
-        
+    
+    print(ProblemCounter)
+
     return ProblemCounter
 
 def ValidatePassword(Password):
