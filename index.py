@@ -13,7 +13,6 @@ def main():
 
         if(ValidatePassword(Password) == False):
             DisplayResults("A senha não atende os requisitos")
-            CadastrationComplete = False
 
         else:
             if(WriteLoginToTextFile(User, Password)):
@@ -21,6 +20,5 @@ def main():
                 CadastrationComplete = True
             else:
                 DisplayResults("Erro ao cadastrar senha. Tente novamente mais tarde")
-                CadastrationComplete = False
                 
 main()
